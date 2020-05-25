@@ -1,5 +1,7 @@
 # fhirform-vue
 
+Render a FHIR Questionnaire as webform
+
 ## About
 
 This is an npm module to convert a FHIR Questionnaire to JSON for automatic form rendering with [vue-form-generator](https://github.com/vue-generators/vue-form-generator). The corresponding FHIR Questionnaire is used as the model for capturing user input.
