@@ -1,21 +1,55 @@
-# fhirformjs
+# fhirform-vue
 
 ## About
 
-This is an npm module to convert a FHIR Questionnaire to jsonForm for automatic form rendering. This is still work in progress and a helping hand will be highly appreciated. The package has two modules: _fhirformjs_  converting items in a Questionnaire to _schema, ui and data_ elements. _fhirformResp_ adds the response converting it into a FHIR _QuestionnaireResponse_ resource that can be submitted to any FHIR server.
+This is an npm module to convert a FHIR Questionnaire to JSON for automatic form rendering with [vue-form-generator](https://github.com/vue-generators/vue-form-generator). The corresponding FHIR Questionnaire is used as the model for capturing user input.
+
+This is part of the [FHIRForm](https://pubmed.ncbi.nlm.nih.gov/30741177/) framework.
+
+[![FHIRForm](https://github.com/dermatologist/fhirform-vue/blob/develop/notes/fhirform-vue.png)](https://github.com/dermatologist/fhirform-vue/blob/develop/notes/fhirform-vue.png)
 
 ## Installation
 
-    npm i --save fhirformjs
+    npm i --save fhirform-vue
 
 Use github for latest dev branch:
 
-    npm install --save github:dermatologist/fhirformjs#develop
+    npm install --save github:dermatologist/fhirform-vue#develop
 
 
 ## Usage
+```
+import { FhirFormVue } from 'fhirform-vue';
+import fetch from 'isomorphic-fetch'
 
-See [this repo](https://github.com/dermatologist/fhir-questionnaire-render-react) to see the usage. Specifically [this file](https://github.com/dermatologist/fhir-questionnaire-render-react/blob/develop/src/containers/FhirFormContainer.js). The meta-repository of FHIRForm framework and resources is [here](https://github.com/E-Health/fhirform).
+
+  it('should output model and schema', async () => {
+    await fetch('https://www.hl7.org/fhir/questionnaire-example-f201-lifelines.json')
+      .then((response) => response.json())
+      .then(async (myJson) => {
+        const ff = FhirFormVue(myJson);
+        console.log(ff);
+        expect(ff).toBeDefined();
+      });
+
+
+```
+### Use it with [vue-form-generator](vue-form-generator)
+
+```
+Vue.use(VueFormGenerator)
+
+export default {
+  data () {
+    return {
+        model: ff.model,
+        schema: ff.schema
+    }
+  }
+}
+
+```
+
 
 ## API
 
@@ -25,4 +59,9 @@ See [this repo](https://github.com/dermatologist/fhir-questionnaire-render-react
 
 ## Credits
 
-[Bell Eapen](http://nuchange.ca/) | McMaster U
+[Bell Eapen](http://nuchange.ca/) 
+
+# TSDX Bootstrap
+
+This project was bootstrapped with [TSDX](https://github.com/jaredpalmer/tsdx).
+
