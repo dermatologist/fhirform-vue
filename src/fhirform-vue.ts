@@ -62,9 +62,6 @@ export const FhirFormVue: any = (fhirjson: any) => {
     model: ffvue_qresp,
     schema: ffvue_schema
   }
-  
-  console.log(JSON.stringify(fform))
-
   return JSON.stringify(fform)
 };
 

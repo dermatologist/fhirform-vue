@@ -1,1 +1,1 @@
-export { FhirFormVue } from "fhirformvue";
+export { FhirFormVue } from "fhirform-vue";
