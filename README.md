@@ -34,6 +34,9 @@ import fetch from 'isomorphic-fetch'
 
 
 ```
+### Use it with [vue-form-generator](vue-form-generator)
+
+```
 Vue.use(VueFormGenerator)
 
 export default {
@@ -44,7 +47,7 @@ export default {
     }
   }
 }
-```
+
 ```
 
 
