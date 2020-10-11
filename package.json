@@ -1,11 +1,29 @@
 {
-  "version": "0.5.0",
+  "name": "fhirform-vue",
+  "description": "FHIR Questionnaire To Web Form Converter for rendering in Vue",
+  "author": {
+    "name": "Bell Eapen",
+    "email": "gravatar@gulfdoctor.net",
+    "url": "https://nuchange.ca"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dermatologist/fhirform-vue.git"
+  },
+  "homepage": "https://github.com/dermatologist/fhirform-vue",
+  "keywords": [
+    "fhir",
+    "vue",
+    "questionnaire",
+    "forms",
+    "ehealth"
+  ],
+  "version": "0.6.0",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "engines": {
     "node": ">=10"
@@ -20,7 +38,7 @@
   "peerDependencies": {},
   "husky": {
     "hooks": {
-      "pre-commit": "tsdx lint"
+      "pre-commit": ""
     }
   },
   "prettier": {
@@ -29,8 +47,6 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "fhirform-vue",
-  "author": "Bell Eapen",
   "module": "dist/fhirform-vue.esm.js",
   "devDependencies": {
     "husky": "^4.2.5",
