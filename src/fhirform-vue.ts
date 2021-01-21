@@ -12,10 +12,8 @@ import VueFormGeneratorGroup from 'group';
 
 export const FhirFormVue: any = (fhirjson: any) => {
   // validation succeeded
-  const schemaValidationResult = R4.RTTI_Questionnaire.decode(fhirjson); // => Right if good, Left if not
-  const fhirq: R4.IQuestionnaire = <R4.IQuestionnaire>(
-    schemaValidationResult.value
-  );
+  const schemaValidationResult: any = R4.RTTI_Questionnaire.decode(fhirjson); // => Right if good, Left if not
+  const fhirq: R4.IQuestionnaire = schemaValidationResult.value as R4.IQuestionnaire
 
   let ffvue_qresp: R4.IQuestionnaireResponse = {
     resourceType: 'QuestionnaireResponse',
@@ -33,7 +31,7 @@ export const FhirFormVue: any = (fhirjson: any) => {
     // _ is the ignored index
 
     // If the item is a group
-    if (item.type == R4.Questionnaire_ItemTypeKind._group) {
+    if (item.type === R4.Questionnaire_ItemTypeKind._group) {
       // Add legend to the group
       let ffvue_group: VueFormGeneratorGroup = {
         legend: item.text?.toString(),
@@ -104,41 +102,41 @@ const Rprocess = (item: R4.IQuestionnaire_Item) => {
 
 const GetControlType = (item: R4.IQuestionnaire_Item) => {
   if (
-    item.type == R4.Questionnaire_ItemTypeKind._date ||
-    item.type == R4.Questionnaire_ItemTypeKind._dateTime ||
-    item.type == R4.Questionnaire_ItemTypeKind._time
+    item.type === R4.Questionnaire_ItemTypeKind._date ||
+    item.type === R4.Questionnaire_ItemTypeKind._dateTime ||
+    item.type === R4.Questionnaire_ItemTypeKind._time
   ) {
     return 'dateTimePicker';
   }
   if (
-    item.type == R4.Questionnaire_ItemTypeKind._choice ||
-    item.type == R4.Questionnaire_ItemTypeKind._openChoice
+    item.type === R4.Questionnaire_ItemTypeKind._choice ||
+    item.type === R4.Questionnaire_ItemTypeKind._openChoice
   ) {
     return 'select';
   }
-  if (item.type == R4.Questionnaire_ItemTypeKind._boolean) {
+  if (item.type === R4.Questionnaire_ItemTypeKind._boolean) {
     return 'switch';
   }
   return 'input';
 };
 
 const GetValueType = (item: R4.IQuestionnaire_Item) => {
-  if (item.type == R4.Questionnaire_ItemTypeKind._date) {
+  if (item.type === R4.Questionnaire_ItemTypeKind._date) {
     return 'item.answer[0].valueDate';
   }
-  if (item.type == R4.Questionnaire_ItemTypeKind._time) {
+  if (item.type === R4.Questionnaire_ItemTypeKind._time) {
     return 'item.answer[0].valueTime';
   }
-  if (item.type == R4.Questionnaire_ItemTypeKind._dateTime) {
+  if (item.type === R4.Questionnaire_ItemTypeKind._dateTime) {
     return 'item.answer[0].valueDateTime';
   }
-  if (item.type == R4.Questionnaire_ItemTypeKind._integer) {
+  if (item.type === R4.Questionnaire_ItemTypeKind._integer) {
     return 'item.answer[0].valueInteger';
   }
-  if (item.type == R4.Questionnaire_ItemTypeKind._decimal) {
+  if (item.type === R4.Questionnaire_ItemTypeKind._decimal) {
     return 'item.answer[0].valueDecimal';
   }
-  if (item.type == R4.Questionnaire_ItemTypeKind._boolean) {
+  if (item.type === R4.Questionnaire_ItemTypeKind._boolean) {
     return 'item.answer[0].valueBoolean';
   }
   return 'item.answer[0].valueString';

@@ -6,6 +6,12 @@
         "**/.git/objects/**": true,
         "**/.git/subtree-cache/**": true,
         "**/node_modules/*/**": true
-      }
+      },
+      "cSpell.words": [
+        "Fform",
+        "ahryman",
+        "fhir",
+        "fhirq"
+      ]
       
 }
