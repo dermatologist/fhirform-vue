@@ -11,8 +11,6 @@ import Fform from 'fform';
 import VueFormGeneratorGroup from 'group';
 
 export const FhirFormVue: any = (fhirq: R4.IQuestionnaire) => {
-
-
   let ffvue_qresp: R4.IQuestionnaireResponse = {
     resourceType: 'QuestionnaireResponse',
     item: [],
