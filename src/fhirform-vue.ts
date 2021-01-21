@@ -10,10 +10,8 @@ import VueFormGeneratorField from 'field';
 import Fform from 'fform';
 import VueFormGeneratorGroup from 'group';
 
-export const FhirFormVue: any = (fhirjson: any) => {
-  // validation succeeded
-  const schemaValidationResult: any = R4.RTTI_Questionnaire.decode(fhirjson); // => Right if good, Left if not
-  const fhirq: R4.IQuestionnaire = schemaValidationResult.value as R4.IQuestionnaire;
+export const FhirFormVue: any = (fhirq: R4.IQuestionnaire) => {
+
 
   let ffvue_qresp: R4.IQuestionnaireResponse = {
     resourceType: 'QuestionnaireResponse',
